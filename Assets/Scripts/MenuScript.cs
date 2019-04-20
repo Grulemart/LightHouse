@@ -8,7 +8,7 @@ public class MenuScript : MonoBehaviour
     public GameObject MenuImage;
 
     //Amount of money, maybe this should be in another script but you can change later.
-    public static int Money = 5;
+    public static int Money = 10;
 
     //Upgrade Values.
     public static int LightUpgradeNumber = 1;
@@ -25,7 +25,7 @@ public class MenuScript : MonoBehaviour
     void Start()
     {
         //Makes the Menu doesnt show at the start.
-        MenuImage.SetActive(false);
+        MenuImage.SetActive(true);
         EnoughMoney.SetActive(false);
         NotEnoughMoney.SetActive(false);
 
@@ -40,20 +40,20 @@ public class MenuScript : MonoBehaviour
     }
 
 
-    //Set in Event Trigger / On Click of a button for oppening menu.
-    public void ActivateMenu()
-    {
-        MenuImage.SetActive(true);
-        //Pause
-        Time.timeScale = 0;
-    }
+
 
     //Set in Event Trigger / On Click of a button for closing menu.
     public void DisableMenu()
     {
         MenuImage.SetActive(false);
         //Un-Pause
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
+    }
+    public void ActivateMenu()
+    {
+        MenuImage.SetActive(true);
+        //Un-Pause
+        Time.timeScale = 0.0001f;
     }
 
     //PUBLICS VOIDS FOR ALL BUTTONS IN MENU
@@ -81,6 +81,7 @@ public class MenuScript : MonoBehaviour
         if(NewUpgrade == "LightUpgrade")
         {
             Money -= 10;
+            EnoughMoney.SetActive(false);
             //Upgrade a value for Light radius etc...
         }
 
@@ -88,16 +89,21 @@ public class MenuScript : MonoBehaviour
         else if (NewUpgrade == "Example")
         {
             Money -= 6;
+            EnoughMoney.SetActive(false);
             //Upgrade a value for Light radius etc...
         }
     }
-
+    public void NoConfirm()
+    {
+        EnoughMoney.SetActive(false);
+        NewUpgrade = null;
+    }
 
 
     //You can copy and paste this and change void name and the money values,
     //and NewUpgrade name.
-    
-    
+
+
     /*public void LightUpgrade()
     {
         if (Money >= 10)
@@ -113,4 +119,5 @@ public class MenuScript : MonoBehaviour
             NotEnoughMoney.SetActive(true);
         }
     }*/
+
 }
