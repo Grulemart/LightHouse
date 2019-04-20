@@ -24,6 +24,7 @@ public class LightMoveController : MonoBehaviour
             Physics.Raycast(r, out hit,Mathf.Infinity, ~layerMask);
             //Draws ray in editor for debugging (Remove Before build)
             Debug.DrawRay(r.origin, r.direction * 10000, Color.yellow);
+            Debug.Log(hit.transform);
             if (hit.transform != null)
             {
                 //Delay When moving light around (WIP)
