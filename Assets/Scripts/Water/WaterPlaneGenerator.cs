@@ -11,16 +11,17 @@ public class WaterPlaneGenerator : MonoBehaviour
     private MeshFilter filter;
     private MeshCollider collider;
 
+    private Mesh WaterMesh;
+
     void Start()
     {
-        Mesh WaterMesh = GenerateMesh();
+        WaterMesh = GenerateMesh();
 
         filter = GetComponent<MeshFilter>();
         filter.mesh = WaterMesh;
 
         collider = GetComponent<MeshCollider>();
         collider.sharedMesh = WaterMesh;
-
     }
 
     private Mesh GenerateMesh() {
