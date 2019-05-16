@@ -28,7 +28,7 @@ public class BoatSpawner : MonoBehaviour
     private void Start()
     {
         //spawns boat on start of game (For testing remove later)
-        SpawnBoat(posA, posB);
+        SpawnBoat();
     }
 
     void Update()
@@ -40,18 +40,18 @@ public class BoatSpawner : MonoBehaviour
             {
                 Destroy(boatInst);
             }
-            SpawnBoat(posA, posB);
+            SpawnBoat();
         }
 
     }
 
     //Boat Spawn function
-    void SpawnBoat(Vector3 posMin, Vector3 posMax)
+    public void SpawnBoat()
     {
         //creates instance of the Boat prefab and spawns it randomly inside the box
-        boatInst = Instantiate(Boat, new Vector3(Random.Range(posMin.x, posMax.x), -1, Random.Range(posMin.z, posMax.z)), transform.rotation);
+        boatInst = Instantiate(Boat, new Vector3(Random.Range(posA.x, posB.x), -1, Random.Range(posA.z, posB.z)), transform.rotation);
         //rotates boat to face the correct direction
-        boatInst.transform.Rotate(-90,0,180);
+        //boatInst.transform.Rotate(-90,0,180);
     }
 
     //draws bounding box gizmo
